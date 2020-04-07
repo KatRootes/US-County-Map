@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" http-equiv="encoding">
+    <title>USA Covid-19 Dashboard</title>
+
+    <!-- Leaflet JS & CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+
+    <!-- Ajax - D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <!-- <link rel="stylesheet" href="../static/d3Style.css">  -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <!-- The div where we will inject our map -->
+      <div class="row">
+        <!-- <div class="col-sm-6 col-md-6">
+          <div id="map"></div>
+            <div class="info"></div>
+            <div id="range-slider-1"></div>
+            <div class="leaflet-top leaflet-right"></div>
+            <div class="info leaflet-control"></div>
+        </div> -->
+        <div class="col-sm-6 col-md-6">
+          <div id="map" class="mapStyle">
+            <!-- styling of shape for map is in style.css file -->
+            <!-- We append our map here. -->
+            <br> 
+            <!-- Adding a break to create space between charts and graphic titles -->
+          </div>
+        </div>
+        
+        <!-- <div class="col-md-6">
+          <h3>To explore this dashboard select a year on the map and click on a state.</h3>
+          <h4 class="text-center">Mouse over the line chart and radial chart for more information.</h4>
+          <div class="about">
+            <a href="/about">More About This Dashboard</a>
+          </div>
+          <div class="text1 text-center"></div>
+          <div class="text2 text-center"></div>
+        </div> -->
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-md-6">
+          <div id="lineChart">
+            <div id="chart"></div>
+          </div>  
+        </div>
+        <div class="col-md-6">
+          <div id="radialChart">
+            <div id="radial"></div>
+          </div>
+        </div>
+      </div> -->
+    </div>  
+
+    <!-- Insert API key-->
+    <script type="text/javascript" src="../static/js/config.js"></script>
+    <script type="text/javascript" src="../static/js/counties.js"></script>
+    <!-- <script type="text/javascript" src="../static/js/us-states.js"></script> -->
+    <!-- Insert JS logic-->
+    <!-- <script type="text/javascript" src="../static/js/logic.js"></script> -->
+
+
+
+
+
+  </body>
+</html>
