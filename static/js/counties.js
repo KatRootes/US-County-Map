@@ -12,7 +12,8 @@ const us = "../data/gz_2010_us_outline_500k.json"
 const startLocation = [44.95, -93.09];
 var outlineColor = "red"; //{"US":"red", "States":"blue", "Counties":"green"};
 const layerName = "outdoors";
-var overlay = L.layerGroup();
+var statesOverlay = L.layerGroup();
+var countiesOverlay = L.layerGroup();
 
 // Create the background layer
 function createLayer(name) {
@@ -29,10 +30,19 @@ function createGeojsonOverlay(data, overlay, outlineColor)
 {
     L.geoJson(data, 
     {
-        // Style each feature (in this case a neighborhood)
+        // Style each feature 
         style: function(feature) 
         {
-            return {
+            if (feature.properties.STATE != "27")
+            {
+                console.log(feature);
+                return {
+                    color: "clear",
+                    fillOpacity: 0.0,
+                    weight: 1.0
+                };
+            }
+            else return {
                 color: outlineColor,
                 fillOpacity: 0.0,
                 weight: 1.0
@@ -40,6 +50,9 @@ function createGeojsonOverlay(data, overlay, outlineColor)
         }
     }).addTo(overlay);
 }
+
+// Here we go...
+
 
 // Grabbing our GeoJSON data..
 d3.json(counties).then(function(data, err) 
@@ -50,18 +63,33 @@ d3.json(counties).then(function(data, err)
     console.log("Made it!!!");
 
     // Creating a geoJSON layer with the retrieved data
-    createGeojsonOverlay(data, overlay, outlineColor);
+    createGeojsonOverlay(data, countiesOverlay, outlineColor);
 });
 
+d3.json(states).then(function(data, err) 
+{
+    // cut to error function if problem comes up in code
+    if (err) throw err;
 
-// Here we go
-var backgroundLayer = createLayer(layerName);
+    console.log("Made it!!!");
 
-// Create map object
+    // Creating a geoJSON layer with the retrieved data
+    createGeojsonOverlay(data, statesOverlay, outlineColor);
+});
+
+var backgroundLayer1 = createLayer(layerName);
+var backgroundLayer2 = createLayer(layerName);
+
+// Create map objects
 var usMAP = L.map("map", {
     center: startLocation,
     zoom: 4,
-    // layers: [baseMaps.Outdoors, overlayMaps.TrafficStops]
-    layers: [backgroundLayer, overlay]
-  });
+    layers: [backgroundLayer1, statesOverlay]
+});
+
+var stateMap = L.map("radialChart", {
+    center: startLocation,
+    zoom: 4,
+    layers: [backgroundLayer2, countiesOverlay]
+});
 
